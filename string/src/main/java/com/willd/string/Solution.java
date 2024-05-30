@@ -127,4 +127,23 @@ public class Solution {
         }
         return String.valueOf(chars);
     }
+
+    /*
+    문제) 문자열: 문자열 압축
+    Tip)
+    정리)
+    Math.round() -> 반올림
+    Math.ceil() -> 무조건 올린다.
+    Math.floor() -> 무조건 내린다.
+     */
+    public static int sol4(String s) {
+        int result = 0;
+        for (int i = 2; i <= s.length() / 2; i ++) {
+            int size = (int) Math.ceil((double) s.length() / i);
+            List<String> compares = new ArrayList<>();
+            for (int j = 0; j < size; j += i) {
+            }
+        }
+        return result;
+    }
 }
