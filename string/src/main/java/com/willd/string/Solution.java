@@ -146,4 +146,37 @@ public class Solution {
         }
         return result;
     }
+
+    /*
+    문제) 문자열: 3진법 뒤집기
+    Tip)
+    1. 숫자를 3진법으로 변환
+    2. 문자열 치환 뒤집기
+    3. 뒤집은 문자열 10진법으로 변환
+
+    정리)
+    1. 10진법 -> 3진법으로 치환하는 방법
+    2. 3진법 -> 10진법으로 치환하는 방법
+    3. 문자열 뒤집기: StringBuilder("HELLO").revers.toString();
+     */
+    public static int sol5(int n) {
+        StringBuilder sb = new StringBuilder();
+        while (n > 0) {
+            sb.append(n % 3);
+            n /= 3;
+
+        }
+        char[] chars = sb.reverse().toString().toCharArray();
+        //1200
+        int result = 0;
+        for (int i = chars.length - 1; i >= 0; i --) {
+            Integer num = Character.getNumericValue(chars[i]);
+            Integer power = 1;
+            for (int j = 1; j <= i; j++) {
+                power *= 3;
+            }
+            result += power * num;
+        }
+        return result;
+    }
 }
