@@ -179,4 +179,29 @@ public class Solution {
         }
         return result;
     }
+
+    /*
+    문제) 이진 변환 반복하기
+    Tip)
+    1. 반복문이 종료되는 경계를 찾는다.
+    2. 반복문을 실행한다는 것은 변환을 하는 행위로 간주 할 수 있다. -> 증가
+    3. replace 했을때 변환한 새로운 String 알 수 있다.
+    4. 이 길이를 통해서 0의 개수를 증가한다.
+    5. s를 초기화 하여 조건에 한번더 태운다. 그리고 이 과정을 반복한다.
+     */
+    public static int[] sol6(String s) {
+        int[] answer = new int[2];
+
+        while (!s.equals("1")) {
+            answer[0] += 1;
+
+            String replaceStr = s.replace("0", "");
+            answer[1] += s.length() - replaceStr.length();
+
+            s = Integer.toBinaryString(replaceStr.length());
+        }
+
+        return answer;
+    }
+
 }
