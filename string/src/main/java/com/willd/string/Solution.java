@@ -1,5 +1,8 @@
 package com.willd.string;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Solution {
 
     public static void main(String[] args) {
@@ -231,5 +234,45 @@ public class Solution {
         }
         return arr[0] == arr[1];
     }
+
+    public static int sol8(String s) {
+//        String[][] compares = new String[][] {
+//                {"zero","0"},
+//                {"one","1"},
+//                {"two","2"},
+//                {"three","3"},
+//                {"four","4"},
+//                {"five","5"},
+//                {"six","6"},
+//                {"seven","7"},
+//                {"eight","8"},
+//                {"nine","9"},
+//        };
+//        for (String[] strs: compares ) {
+//            s = s.replace(strs[0], strs[1]);
+//        }
+//        return Integer.parseInt(s);
+
+        String[] strArr = {
+                "zero",
+                "one",
+                "two",
+                "three",
+                "four",
+                "five",
+                "six",
+                "seven",
+                "eight",
+                "nine"
+        };
+
+        for (int i = 0; i < strArr.length; i++) {
+            s = s.replace(strArr[i], Integer.toString(i));
+        }
+        return Integer.parseInt(s);
+
+    }
+
+
 
 }
