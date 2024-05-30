@@ -204,4 +204,32 @@ public class Solution {
         return answer;
     }
 
+    /*
+    문제) 문자열 내 p와 y의 개수
+    Tip)
+    1. 모두 소문자로 치환한다.
+    2. p를 뽑아낸다.
+    3. y를 뽑아낸다.
+     */
+    // 다시 한번 보자 다른 아이디어를 통해 문제를 풀 수 있어야 한다.
+    // 지금 현재 완전 탐색만 진행하고 있다.
+    public static boolean sol7(String s) {
+        String lowStr =s.toLowerCase();
+        int[] arr = new int[2];
+
+        String[] strs = lowStr.split("");
+
+        for (int i = 0; i < lowStr.length(); i ++) {
+            if (strs[i].equals("p")) {
+                arr[0] += 1;
+            } else if (strs[i].equals("y")) {
+                arr[1] += 1;
+            }
+        }
+        if (arr[0] == 0 && arr[1] == 0) {
+            return true;
+        }
+        return arr[0] == arr[1];
+    }
+
 }
