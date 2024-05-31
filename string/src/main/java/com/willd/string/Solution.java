@@ -326,6 +326,108 @@ public class Solution {
 //
 //        return true;
     }
+    /*
+    문제) 문자열: 신규 아이디 추천
+    문자열은 패턴 매칭에 대해서 알아야 한다.
+    Tip)
+    1.	문자 클래스: 대괄호 [] 안에 문자를 나열하여 일치시킬 문자의 집합을 정의합니다.
+    •	[abc]: ‘a’, ‘b’, ‘c’ 중 하나의 문자와 일치
+	•	[a-z]: ‘a’부터 ‘z’까지의 소문자 중 하나와 일치
+	•	[A-Z]: ‘A’부터 ‘Z’까지의 대문자 중 하나와 일치
+	•	[0-9]: 숫자 ‘0’부터 ‘9’까지 중 하나와 일치
+	•	[^...]: 대괄호 안에 나열된 문자 외의 문자와 일치
+
+    2.	특수 문자:
+	•	.: 모든 문자와 일치
+	•	\\: 이스케이프 문자
+	•	\\d: 숫자와 일치 (0-9와 동일)
+	•	\\D: 숫자가 아닌 문자와 일치
+	•	\\w: 영숫자 문자와 일치 (a-z, A-Z, 0-9, _)
+	•	\\W: 영숫자가 아닌 문자와 일치
+	•	\\s: 공백 문자와 일치 (스페이스, 탭, 줄 바꿈)
+	•	\\S: 공백이 아닌 문자와 일치
+
+	3.	경계:
+	•	^: 문자열의 시작을 의미
+	•	$: 문자열의 끝을 의미
+	•	\\b: 단어 경계를 의미
+	•	\\B: 단어 경계가 아님을 의미
+
+	4.	반복:
+	•	*: 0회 이상 반복
+	•	+: 1회 이상 반복
+	•	?: 0회 또는 1회 반복
+	•	{n}: 정확히 n회 반복
+	•	{n,}: n회 이상 반복
+	•	{n,m}: n회 이상 m회 이하 반복
+
+    // 문자열 패턴
+    // 문자열 대체 replaceAll(); -> 패턴 매칭 사용가능
+    	// 문자열 pattern matching: matches
+
+	// *** 문자열 자르기 substring()
+	// 문자열 자르기 split("")
+
+	// 문자열 charAt();
+	// 문자열 toCharArray();
+
+	// 문자열 공백 제거 trim()
+
+	// 문자열 변환 toUpperCase(), toLowerCase()
+	// 문자열 변환 replace()
+
+	// 문자열 검색 indexOf(String str)
+	- 처음으로 문자열 str 등장하는 index 반환
+
+	//compareTo(String anotherString): 두 문자열을 사전 순으로 비교합니다.
+	주체가 (str1)이 비교 대상의 (str2)에 사전순으로 뒤에 있느냐?
+	Ex)
+	String str1 = "apple";
+    String str2 = "banana";
+    String str3 = "apple";
+
+
+    // compareTo(String anotherString) 메서드를 사용하여 문자열 비교
+    int result1 = str1.compareTo(str2);
+    System.out.println("str1.compareTo(str2): " + result1); // 출력 결과: 음수 (-1)
+
+    int result2 = str2.compareTo(str1);
+    System.out.println("str2.compareTo(str1): " + result2); // 출력 결과: 양수 (1)
+
+    int result3 = str1.compareTo(str3);
+    System.out.println("str1.compareTo(str3): " + result3); // 출력 결과: 0
+
+	예제) "\\bword\\b|^Hello|world$|\\Bword\\B"
+	예제) "\\d{3}\\s\\w+\\s\\S+\\s\\."
+
+	숫자 0 -> 48
+	'A' -> 65
+	'a' -> 97
+     */
+    public static String sol10(String new_id) {
+        new_id = new_id.toLowerCase();
+
+        new_id = new_id.replaceAll("[^a-z0-9\\-_.]", "");
+
+        new_id = new_id.replaceAll("\\.{2,}", ".");
+
+        new_id = new_id.replaceAll("^\\.|\\.$", "");
+
+        if (new_id.isEmpty()) {
+            new_id = "a";
+        }
+
+        if (new_id.length() >= 16) {
+            new_id = new_id.substring(0, 15);
+            new_id = new_id.replaceAll("\\.$", "");
+        }
+
+        while (new_id.length() < 3) {
+            new_id += new_id.charAt(new_id.length() - 1);
+        }
+        return new_id;
+    }
+
 
 
 }
