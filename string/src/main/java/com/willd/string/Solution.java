@@ -157,14 +157,47 @@ public class Solution {
 
      */
     public static int sol4(String s) {
-        int result = 0;
-        for (int i = 2; i <= s.length() / 2; i ++) {
-            int size = (int) Math.ceil((double) s.length() / i);
-            List<String> compares = new ArrayList<>();
-            for (int j = 0; j < size; j += i) {
+        int answer = s.length();
+
+        for (int unit = 1; unit <= s.length() / 2; unit ++) {
+            StringBuilder builder = new StringBuilder();
+            String prev = s.substring(0, unit);
+
+            int cnt = 1;
+            for (int i = unit; i < s.length(); i += unit) {
+                String curr = s.substring(i, Math.min(i + unit, s.length()));
+                if (prev.equals(curr)) {
+                    cnt ++;
+                } else {
+                    builder.append(cnt > 1 ? cnt + prev : prev);
+                    prev = curr;
+                    cnt = 1;
+                }
             }
+            builder.append(cnt > 1 ? cnt + prev : prev);
+            answer = Math.min(answer, builder.toString().length());
         }
-        return result;
+        return answer;
+
+//        int answer = s.length();
+//        for (int unit = 1; unit <= s.length() / 2; unit++) {
+//            StringBuilder compressed = new StringBuilder();
+//            String prev = s.substring(0, unit);
+//            int count = 1;
+//            for (int i = unit; i < s.length(); i += unit) {
+//                String curr = s.substring(i, Math.min(i + unit, s.length()));
+//                if (prev.equals(curr)) {
+//                    count++;
+//                } else {
+//                    compressed.append(count > 1 ? count + prev : prev);
+//                    prev = curr;
+//                    count = 1;
+//                }
+//            }
+//            compressed.append(count > 1 ? count + prev : prev);
+//            answer = Math.min(answer, compressed.length());
+//        }
+//        return answer;
     }
 
     /*
@@ -190,12 +223,8 @@ public class Solution {
         //1200
         int result = 0;
         for (int i = chars.length - 1; i >= 0; i --) {
-            Integer num = Character.getNumericValue(chars[i]);
-            Integer power = 1;
-            for (int j = 1; j <= i; j++) {
-                power *= 3;
-            }
-            result += power * num;
+            int num = Character.getNumericValue(chars[i]);
+            result += (int) (Math.pow(3, i) * num);
         }
         return result;
     }
