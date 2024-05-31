@@ -290,6 +290,42 @@ public class Solution {
 
     }
 
+    /*
+    문제) 문자열: 문자열 다루기 기본
+    Tip) 범위 판단
+     */
+
+    public static boolean sol9(String s) {
+        char[] chars = s.toCharArray();
+
+        if (s.length() != 4 && s.length() != 6) {
+            return false;
+        }
+
+        boolean result = true;
+        for (int i = 0; i < chars.length; i ++) {
+            if (chars[i] >= 'A' && chars[i] <= 'z') {
+                result = false;
+            }
+        }
+        return result;
+
+
+//        // 문자열의 길이가 4 또는 6인지 확인
+//        if (s.length() != 4 && s.length() != 6) {
+//            return false;
+//        }
+//
+//        // 문자열이 숫자로만 구성되어 있는지 확인
+//        char[] chars = s.toCharArray();
+//        for (char c : chars) {
+//            if (c < '0' || c > '9') {
+//                return false;
+//            }
+//        }
+//
+//        return true;
+    }
 
 
 }
