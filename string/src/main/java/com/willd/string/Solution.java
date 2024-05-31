@@ -1,7 +1,6 @@
 package com.willd.string;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Map;
 
 public class Solution {
 
@@ -138,6 +137,24 @@ public class Solution {
     Math.round() -> 반올림
     Math.ceil() -> 무조건 올린다.
     Math.floor() -> 무조건 내린다.
+
+    절대값
+    Match.abs()
+    Match.min()
+    Match.max()
+
+    제곱근 구하기 (square root)
+    Match.sqrt(25) 루트 25 -> 5.0
+
+    거듭제곱 구하기
+    Match.pow(2, 3) 2의 3제곱
+
+    삼각함수
+    Math.sin(Match.PI / 6) sin(30도)
+    Math.cos(Match.PI / 3); cos(60도)
+    Match.tan(Match.PI / 4); tan(45도)
+
+
      */
     public static int sol4(String s) {
         int result = 0;
