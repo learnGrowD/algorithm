@@ -47,6 +47,24 @@ public class Solution {
         return result.stream().mapToInt(i -> i).toArray();
 
     }
+    /*
+    문제 2) 카펫
+    Tip) 방정식을 세우면 가장 좋다.
+    방정식을 세우고 방정식을 푸는 방법은 대입이다.
+     */
+    public int[] sol2(int brown, int yellow) {
+        int total = brown + yellow;
+        for (int width = 1; (double) total / (double) width >= 1; width ++) {
+            double height = (double) total / (double) width;
+            if (height - Math.ceil(height) > 0) {
+                continue;
+            }
+            if (yellow == (width - 2) * (height - 2)) {
+                return new int[] {(int) height, width};
+            }
+        }
+        return null;
+    }
 
 
 }
