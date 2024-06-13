@@ -1,3 +1,6 @@
 rootProject.name = 'algorithm'
 include 'string'
+include 'exhaustive-search'
+include 'data-struct'
+include 'sort'
 
