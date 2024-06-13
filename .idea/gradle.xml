@@ -9,6 +9,9 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/data-struct" />
+            <option value="$PROJECT_DIR$/exhaustive-search" />
+            <option value="$PROJECT_DIR$/sort" />
             <option value="$PROJECT_DIR$/string" />
           </set>
         </option>
